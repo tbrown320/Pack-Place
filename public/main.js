@@ -1,4 +1,4 @@
-// const pencils = document.getElementsByClassName("fa-pencil");
+const pencils = document.getElementsByClassName("fa-pencil");
 const discard = document.getElementsByClassName("fa-times");
 
 // Array.from(pencils).forEach(function (element) {
@@ -25,6 +25,33 @@ const discard = document.getElementsByClassName("fa-times");
 //       })
 //   });
 // });
+
+//event listener for edit card tool
+Array.from(pencils).forEach(function (element) {
+  element.addEventListener('click', function () {
+    const card = this.parentNode.parentNode
+    const id = card.dataset.id
+    const grade = card.querySelector('.newGrade').value
+    const price = card.querySelector('.newPrice').value
+    //if no grade or price when tell user to type them in
+    if (!grade && !price) {
+      return alert('Type a new grade or new price to edit the card.')
+    }
+    fetch('cards', {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'id': id,
+        'grade': grade,
+        'price': price
+      })
+    }).then(function (response) {
+      window.location.reload()
+    })
+  });
+});
 
 Array.from(discard).forEach(function (element) {
   element.addEventListener('click', function () {

@@ -70,6 +70,35 @@ module.exports = function (app, passport, db) {
       })
   })
 
+  app.put('/cards', (req, res) => {
+    // only update the entries the user actually sent
+    let updates = {}
+    //if there is a new grade on the card replace it with that new grade
+    if (req.body.grade) {
+      updates.grade = req.body.grade
+    }
+    // same with the price
+    if (req.body.price) {
+      updates.pricePaid = Number(req.body.price)
+    }
+    // if no updates then keep things the same
+    if (Object.keys(updates).length === 0) {
+      return res.send('Nothing to update!')
+    }
+    db.collection('cards').findOneAndUpdate(
+      {
+        _id: ObjectId(req.body.id),
+        userId: req.user._id
+      },
+      {
+        $set: updates
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send('Card updated!')
+      }
+    )
+  })
+
   // =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================
   // =============================================================================

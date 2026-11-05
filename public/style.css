@@ -23,7 +23,7 @@ img {
 
 @font-face {
   font-family: "Bhanira";
-  src: url("/public/fonts/Bhanira.ttf") format("truetype");
+  src: url("/fonts/Bhanira.ttf") format("truetype");
 }
 
 header {
@@ -51,8 +51,13 @@ header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+header,
+.page-header h1 {
   font-family: "Bhanira";
+}
+
+.page-header h1 {
+  font-size: 75px;
 }
 
 #ticketer p {
@@ -131,6 +136,27 @@ h1 {
   right: 12px;
   font-size: 18px;
   cursor: pointer;
+}
+
+/* keep the edit pencil visible on the strip, left of the x */
+.card .fa-pencil {
+  position: absolute;
+  top: 10px;
+  right: 38px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* edit boxes inside each card */
+.newGrade,
+.newPrice {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .card_player {

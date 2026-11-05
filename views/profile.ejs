@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Pace Place</title>
+    <title>Pack Place</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -37,7 +37,7 @@
                 <h3>My Collection</h3>
                 <!-- if we have cards then we will display it here -->
                 <% if (cards.length > 0) { %>
-                    <h1><%= cards.length %> cards</h1>
+                    <h1><%= cards.length %> Cards</h1>
                     <p>Total Value: $<%= totalValue.toFixed(2) %></p>
                     <% } else { %>
                     <p>No cards in your collection yet. Start now and add one!</p>
@@ -55,7 +55,12 @@
               <% if (cards[i].parallel) { %>
               <span>Parallel: <%= cards[i].parallel %></span> 
             <% } %>
-            <span><i class="fa fa-times" aria-hidden="true"></i></span>
+              <span>Grade: <%= cards[i].grade %></span>
+              <span>Price Paid: $<%= cards[i].pricePaid %></span>
+              <input type="text" class="newGrade" placeholder="New grade">
+              <input type="number" class="newPrice" placeholder="New price" step="0.01">
+              <span><i class="fa fa-times" aria-hidden="true"></i></span>
+              <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
             </li>
           <% } %>
           </ul>
