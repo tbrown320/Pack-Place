@@ -168,6 +168,45 @@ header,
   display: block;
 }
 
+/* reflective effect */
+
+/* Palette: navy #0f2a44, gold #e8a317,
+glare white at low opacity so text stays readable */
+.reflective {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease;
+}
+/* the glare layer sits on top, but never blocks clicks */
+.reflective::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0) 55%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reflective:hover::after {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reflective {
+    transition: none;
+  }
+  .reflective::after {
+    display: none;
+  }
+}
+
 /* on narrow screens, fall back to one column so nothing squeezes */
 @media (max-width: 500px) {
   .card-form {

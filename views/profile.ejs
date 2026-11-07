@@ -48,7 +48,7 @@
           <h3>Cards</h3>
           <ul class="cards">
           <% for(let i=0; i<cards.length; i++) {%>
-            <li class="card" data-id="<%= cards[i]._id %>">
+            <li class="card reflective" data-id="<%= cards[i]._id %>">
               <span class="card_player"><%= cards[i].player %></span>
               <span><%= cards[i].year %> <%= cards[i].set %></span>
               <span><%= cards[i].company %> <%= cards[i].cardType %></span>

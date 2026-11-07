@@ -69,3 +69,31 @@ Array.from(discard).forEach(function (element) {
     })
   });
 });
+
+// reflective effect coding
+let reflectiveCards = document.getElementsByClassName("reflective");
+
+Array.from(reflectiveCards).forEach(function (element) {
+  // follow the mouse while it is over this one card
+  element.addEventListener('mousemove', function (event) {
+    let rect = element.getBoundingClientRect();
+    let x = ((event.clientX - rect.left) / rect.width) * 100;
+    let y = ((event.clientY - rect.top) / rect.height) * 100;
+
+    // hand the position to CSS for the glare
+    element.style.setProperty('--mx', x + '%');
+    element.style.setProperty('--my', y + '%');
+
+    // tilt a little toward the cursor (max about 6 degrees)
+    let tiltX = ((y - 50) / 50) * -6;
+    let tiltY = ((x - 50) / 50) * 6;
+    element.style.transform =
+      'perspective(700px) rotateX(' + tiltX + 'deg) ' +
+      'rotateY(' + tiltY + 'deg)';
+  });
+
+  // put the card back flat when the mouse leaves
+  element.addEventListener('mouseleave', function () {
+    element.style.transform = '';
+  });
+});
