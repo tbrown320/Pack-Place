@@ -82,7 +82,6 @@ public/
 - **Stock ticker** — your most valuable cards, plus the most valuable cards on the market, in a rotating ticker grouped by company. The dashboard currently has only a placeholder for this (`#ticketer`); the working version will use SportsCardsPro data via ReefAPI, cached and refreshed daily.
 - **More card options** — Fleer and other companies, plus card types like Rookie Patch Autograph, Patch, and Redemption, in the add-a-card form.
 - Search and filter the collection
-- Trading between users (after demo day)
 
 ---
 
