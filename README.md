@@ -4,7 +4,7 @@ The one stop shop for all your NBA trading card needs.
 
 Pack Place is a personal collection tracker for NBA trading cards. Sign up, add your cards, and see your whole collection — and what you paid for it — in one place. Each user only ever sees their own cards.
 
-Built as a fellowship demo day project. Demo day: **December 10, 2026**.
+Live Link: https://pack-place.onrender.com/
 
 ## What it does
 
